@@ -7,7 +7,7 @@ module MyShopppingCart
       @order = Orders::Order.new
     end
     
-    def import_products input_str
+    def import_products(input_str)
       @product.import(input_str)
     end
 

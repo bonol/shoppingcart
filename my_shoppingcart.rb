@@ -1,4 +1,4 @@
-require_relative './product/product'
+require_relative './products/product'
 require_relative './info_presenter'
-require_relative './order/order'
+require_relative './orders/order'
 require_relative './shopping_cart'

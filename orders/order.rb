@@ -3,7 +3,6 @@ require_relative './promotion'
 
 module Orders
   class Order
-    
     attr_accessor :line_items, :order_sum
     
     def initialize
@@ -16,9 +15,9 @@ module Orders
         promotion_name: 'N/A',
         discount: 0
       )
-      @promotion = Orders::Promotion.new
+      @promotion = Promotion.new
     end
-    
+
     def update_order_cost
       if @promotion.applicable?(@line_items)
         promotion_rule = @promotion.retrieve_rule(@line_items)
@@ -33,7 +32,7 @@ module Orders
         @order_sum.discount = 0
       end
     end
-    
+
     def calculate_total_cost(discount = 0)
       percent = (100 - discount.to_i).to_f / 100
       cost = @line_items.inject(0.0) { |sum, i| sum + i.price.to_f } * percent
@@ -41,7 +40,7 @@ module Orders
     end
     
     def add_single_item(product_id, products)
-      if (product=product_exist?(products, product_id))
+      if (product = product_exist?(products, product_id))
         @line_items << product
         @order_sum.total_item += 1
         @order_sum.order_num = rand(1000..1100)
@@ -55,6 +54,5 @@ module Orders
     def product_exist?(products, product_id)  
       products.find { |product| product.uuid == product_id.to_i }
     end
-    
   end
 end
