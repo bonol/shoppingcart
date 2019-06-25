@@ -30,5 +30,9 @@ module MyShopppingCart
     def order_sum
       @order.order_sum
     end
+    
+    def clear_up_order
+      @order = Orders::Order.new
+    end
   end
 end

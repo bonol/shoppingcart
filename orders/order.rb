@@ -7,7 +7,12 @@ module Orders
     
     def initialize
       @line_items = []
-      @order_sum = OpenStruct.new(
+      @order_sum = init_order_value
+      @promotion = Promotion.new
+    end
+    
+    def init_order_value
+      OpenStruct.new(
         order_num: 0,
         total_cost: '00.00',
         total_item: 0,
@@ -15,7 +20,6 @@ module Orders
         promotion_name: 'N/A',
         discount: 0
       )
-      @promotion = Promotion.new
     end
 
     def update_order_cost

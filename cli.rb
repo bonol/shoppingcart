@@ -29,6 +29,9 @@ module MyShopppingCart
             end
           when 'show shoppingcart'
             present_shoppingcart(shoppingcart.line_items, shoppingcart.order_sum)
+          when 'clear shoppingcart'
+            shoppingcart.clear_up_order
+            puts 'ShoppingCart got clean up.'
           when 'help'
             present_helper
           when 'exit'
